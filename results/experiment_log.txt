@@ -1,0 +1,19 @@
+tuned Tape follower                      tune-set exp PnL $ -0.19  params {'half': 0.08, 'alpha': 0.5}
+tuned Rule of thumb                      tune-set exp PnL $  2.51  params {'half': 0.08}
+tuned Model, static spread               tune-set exp PnL $  3.65  params {'half': 0.06}
+tuned Model + inventory skew             tune-set exp PnL $  3.99  params {'half': 0.05, 'gamma': 0.02}
+tuned Model + skew + GM spread + flow    tune-set exp PnL $  3.39  params {'gamma': 0.02, 'pi': 0.15, 'lam': 0.005}
+
+strategy                                 realised $/game [95% CI]     expected $/game [95% CI]    vs rule of thumb (paired, realised)
+Tape follower                         0.11 [ -0.12,  0.35]     -0.07 [ -0.20,  0.05]     -1.97 [ -2.58, -1.36]
+Rule of thumb                         2.08 [  1.58,  2.59]      2.29 [  2.15,  2.42]     +0.00 [ +0.00, +0.00]
+Model, static spread                  3.67 [  3.29,  4.05]      3.71 [  3.63,  3.78]     +1.58 [ +1.08, +2.09]
+Model + inventory skew                4.02 [  3.74,  4.29]      4.01 [  3.96,  4.06]     +1.93 [ +1.46, +2.40]
+Model + skew + GM spread + flow       3.36 [  3.11,  3.62]      3.38 [  3.33,  3.43]     +1.28 [ +0.81, +1.75]
+
+Sensitivity (parameters frozen, expected $/game, paired vs rule of thumb [95% CI]):
+ informed share 0.00: Tape follower=  3.36  Rule of thumb=  4.61  Model=  5.16  Model + inventory =  5.37  Model + skew + GM =  4.43
+ informed share 0.05: Tape follower=  1.08  Rule of thumb=  3.93  Model=  4.75  Model + inventory =  4.90  Model + skew + GM =  4.07
+ informed share 0.15: Tape follower= -0.08  Rule of thumb=  2.41  Model=  3.83  Model + inventory =  4.12  Model + skew + GM =  3.46
+ informed share 0.30: Tape follower= -0.96  Rule of thumb=  0.80  Model=  2.53  Model + inventory =  3.04  Model + skew + GM =  2.60
+done in 199s
